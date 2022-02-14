@@ -18,17 +18,19 @@ void selection_sort(int *array, size_t size)
 
 	if (size > 2)
 	{
-		while (i < size - 1)
-		{
-			k = j;
+		return;
+	}
 
-			j = location_smallest(array, i, size - 1);
-			if (k != j)
-			{
-				swap(array, i, j, size);
-			}
-			i++;
+	while (i < size - 1)
+	{
+		k = j;
+
+		j = location_smallest(array, i, size - 1);
+		if (k != j)
+		{
+			swap(array, i, j, size);
 		}
+		i++;
 	}
 
 }
