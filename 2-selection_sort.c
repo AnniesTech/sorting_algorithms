@@ -16,7 +16,7 @@ void selection_sort(int *array, size_t size)
 	int j = 0;
 	int k = 0;
 
-	if (size > 2)
+	if (size < 2)
 	{
 		return;
 	}
