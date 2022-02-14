@@ -16,7 +16,7 @@ void selection_sort(int *array, size_t size)
 	int j = 0;
 	int k = 0;
 
-	if (size < 2)
+	if (size < 2 || !array)
 	{
 		return;
 	}
@@ -25,7 +25,7 @@ void selection_sort(int *array, size_t size)
 	{
 		k = j;
 
-		j = location_smallest(array, i, size - 1);
+		j = location_smallest(array, i, size);
 		if (k != j)
 		{
 			swap(array, i, j, size);
@@ -68,7 +68,7 @@ void swap(int *array, int x, int y, size_t size)
 int location_smallest(int *array, int s, int e)
 {
 	int i = s;
-	int j = i;
+	int j = i + 1;
 
 	while (i <= e)
 	{
