@@ -42,12 +42,12 @@ void selection_sort(int *array, size_t size)
 
 void swap(int *array, int x, int y, size_t size)
 {
-int tmp;
+	int tmp;
 
-tmp = array[x];
-array[x] = array[y];
-array[y] = tmp;
-print_array(array, size);
+	tmp = array[x];
+	array[x] = array[y];
+	array[y] = tmp;
+	print_array(array, size);
 }
 
 /**
@@ -75,3 +75,4 @@ int location_smallest(int *array, int s, int e)
 	}
 	return (j);
 }
+
