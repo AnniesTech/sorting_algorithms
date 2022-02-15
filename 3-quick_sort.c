@@ -1,82 +1,82 @@
-#include <stdio.h>
-#include <stdlib.h>
 #include "sort.h"
 
 /**
- * main - Entry point
- *
- * Return: Always 0
+ *swap - Swaps two integers
+ *@x: int
+ *@y: int
+ *Return: Swapped int, void.
  */
 
-void quick_sort(int *array, size_t size)
+void swap(int *x, int *y)
 {
-	quicksort_recursion(array, 0, size - 1); /*sorts entire array*/
+	int tmp;
 
+	tmp = *x;
+	*x = *y;
+	*y = tmp;
 }
 
-/**
- * main - Entry point
- *
- * Return: Always 0
- */
-
-void swap(int x, int y)
-{
-	int tmp = x;
-	x = y;
-	y = tmp;
-
-}
 
 /**
- * main - Entry point
- *
- * Return: Always 0
+ * partition - Partition an array using pivot
+ * @array: Array
+ * @start: int
+ * @end: int
+ * @size: size of array (size_t)
+ * Return: index of pivote
  */
 
-void quicksort_recursion(int *array, size_t start, size_t end)
-{
-	size_t pivot_index = partition(array, start, end);
-	
-	/*stops the recursion process*/
-	if (start < end)
-	{
-		/*left portion of the array*/
-		quicksort_recursion(array, start, pivot_index - 1);
-
- 
-		/*right portion of array*/
-		quicksort_recursion(array, pivot_index + 1, end);
-
-	}
-}
-
-/**
- * main - Entry point
- *
- * Return: Always 0
- */
-
-size_t partition(int *array, size_t start, size_t end)
+int partition(int *array, int start, int end, size_t size)
 {
 	/*pivot will always be the last position of the portion array*/
 	int pivot_value = array[end];
-	size_t i = start;
-	size_t j;
+	int i = start - 1, j;
 
-	for (j = start; j < end; j++)
+	for (j = start; j <= end; j++)
 	{
 		if (array[j] <= pivot_value)
 		{
-			swap(array[i], array[j]);
 			i++;
+			if (i != j)
+			{
+				swap(&array[i], &array[j]);
+				print_array(array, size);
+			}
 		}
 	}
-
-	/*to set the pivot value at index i*/
-	swap(array[i], array[end]);
-
-
-	/*the pivot is in i*/
 	return (i);
+}
+
+/*
+ * quicksort_recursion - Sorts recursively an Array
+ * @array: Array to be sorted
+ * @start: The lowest value of the array
+ * @end: highest value of the array
+ * @size: Size of The Array
+ * Return: void
+ */
+
+void quicksort_recursion(int *array, int start, int end, size_t size)
+{
+	int x;
+	/*stops the recursion process*/
+	if (start < end)
+	{
+		x = partition(array, start, end, size);
+		/*left portion of the array*/
+		quicksort_recursion(array, start, x - 1, size); 
+		/*right portion of array*/
+		quicksort_recursion(array, x + 1, end, size);
+	}
+}
+
+/**
+ * quick_sort - Quick Sort Algorithm using lomuto partition
+ * @array: Array to sort
+ * @size: Size of The Array
+ * Return: Sorted Array, void
+ */
+void quick_sort(int *array, size_t size)
+{
+	quicksort_recursion(array, 0, size - 1, size); /*sorts entire array*/
 }
