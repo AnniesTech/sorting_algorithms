@@ -12,72 +12,35 @@
 
 void selection_sort(int *array, size_t size)
 {
-	size_t i = 0;
-	int j = 0;
-	int k = 0;
+	size_t i = 0, j = 0;
+	size_t k = 0;
+	int tmp = 0;
 
 	if (size < 2)
 	{
 		return;
 	}
 
-	while (i < size - 1)
+	while (i < size)
 	{
-		k = j;
+		k = i;
 
-		j = location_smallest(array, i, size - 1);
-		if (k != j)
+		for (j = i + 1; j < size; j++)
 		{
-			swap(array, i, j, size);
+			if (array[k] > array[j])
+			{
+				k = j;
+			}
 		}
+
+		if (k != i)
+		{
+			tmp = array[i];
+			array[i] = array[k];
+			array[k] = tmp;
+			print_array(array, size);
+		}
+
 		i++;
 	}
-
 }
-
-
-/**
- * swap- swaps two positions of an array of integers
- * @array: an array of integers
- * @x: index of position of array to swap
- * @y: index of position of array to swap
- * @size: the size of the array of integers
- * Return: Nothing.
- */
-
-void swap(int *array, int x, int y, size_t size)
-{
-	int tmp;
-
-	tmp = array[x];
-	array[x] = array[y];
-	array[y] = tmp;
-	print_array(array, size);
-}
-
-/**
- * location_smallest- locates the smallest number in an
- * array of integers
- * @array: an array of integers
- * @s: staring point to look for the smallest remaing int
- * @e: ending point
- * Return: an integer that represents the index where
- * the smallest integer is located
- */
-
-int location_smallest(int *array, int s, int e)
-{
-	int i = s;
-	int j = i;
-
-	while (i <= e)
-	{
-		if (array[i] < array[j])
-		{
-			j = i;
-		}
-		i++;
-	}
-	return (j);
-}
-

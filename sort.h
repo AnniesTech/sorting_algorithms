@@ -26,8 +26,4 @@ void bubble_sort(int *array, size_t size);
 void insertion_sort_list(listint_t **list);
 void selection_sort(int *array, size_t size);
 
-/*aux functions*/
-void swap(int *array, int x, int y, size_t size);
-int location_smallest(int *array, int s, int e);
-
 #endif
