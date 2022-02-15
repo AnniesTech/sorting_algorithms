@@ -47,7 +47,7 @@ int partition(int *array, int start, int end, size_t size)
 	return (i);
 }
 
-/*
+/**
  * quicksort_recursion - Sorts recursively an Array
  * @array: Array to be sorted
  * @start: The lowest value of the array
@@ -64,7 +64,7 @@ void quicksort_recursion(int *array, int start, int end, size_t size)
 	{
 		x = partition(array, start, end, size);
 		/*left portion of the array*/
-		quicksort_recursion(array, start, x - 1, size); 
+		quicksort_recursion(array, start, x - 1, size);
 		/*right portion of array*/
 		quicksort_recursion(array, x + 1, end, size);
 	}
