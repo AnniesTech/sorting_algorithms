@@ -7,7 +7,7 @@
  * @b: node
  */
 
-void swap(listint_t *a, listint_t *b, listint_t **head)
+void _swap(listint_t *a, listint_t *b, listint_t **head)
 {
 	listint_t *aux1 = NULL, *aux2 = NULL;
 
@@ -56,7 +56,7 @@ void insertion_sort_list(listint_t **list)
 
 		while (prev && prev->n > aux)
 		{
-			swap(prev, head, list);
+			_swap(prev, head, list);
 			print_list(*list);
 			prev = head->prev;
 		}
