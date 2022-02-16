@@ -1,7 +1,7 @@
 #include "sort.h"
 
 /**
- * swap - swaps 2 elements in an list
+ * _swap - swaps 2 elements in an list
  * @head: head of list
  * @a: node
  * @b: node
